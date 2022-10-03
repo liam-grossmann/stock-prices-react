@@ -1,12 +1,12 @@
 # stock-prices-react
 
-STAR WARS scrolling text from the 1977 movie.
+NASDAQ stock prices and charts. Built using ReactJS, RxJS and D3.
 
-D3 and CSS3 are used to animate images and text. Project built using webpack 5.0.
+Project build tool ViteJS.
 
-**Click [here](https://nice-bush-0e3f23110.2.azurestaticapps.net/) for live demo.**
+**Click [here](https://zealous-sky-017eda110.2.azurestaticapps.net) for live demo.**
 
-[<img src="src/assets/starwars.jpg" style="width: 50%; height: 50%" />](https://nice-bush-0e3f23110.2.azurestaticapps.net/)
+[<img src="src/assets/starwars.jpg" style="width: 50%; height: 50%" />](https://zealous-sky-017eda110.2.azurestaticapps.net)
 
 
 
