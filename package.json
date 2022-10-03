@@ -1,0 +1,32 @@
+{
+  "name": "stock-prices-react",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Stock prices with charts",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "stock-prices",
+    "reactJs",
+    "RxJs",
+    "ViteJs",
+    "D3"
+  ],
+  "author": "Liam Grossmann",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0"
+  }
+}
