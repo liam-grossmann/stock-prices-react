@@ -1,0 +1,58 @@
+div.reactivetraderrightpanel {
+    padding: 20px;
+    background: #354C5C;
+    background: -webkit-linear-gradient(#354C5C, #0D1114 30%);
+    background: -o-linear-gradient(#354C5C, #0D1114 30%);
+    background: -moz-linear-gradient(#354C5C, #0D1114 30%);
+    background: linear-gradient(#354C5C, #0D1114 30%);
+    width: 100%; 
+} 
+
+.detail {
+    color: white;
+    font-size: 1.3em;
+}
+
+.row-bordered:after {
+    content: "";
+    display: block;
+    border-bottom: .05em solid #5A5959;
+    margin: 0px 0px 0px 0px;
+}
+
+.white-text {
+    color: white;
+}
+
+.grey-text {
+    color: #AAAEAF;
+}
+
+.blue-text {
+    color: #05AFEC;
+}
+
+.red-text {
+    color: #ff3F41;
+}
+
+.green-text {
+    color: #24D223
+}
+
+.large-label
+{
+    font-size: 1.2em;
+}
+
+.large-text
+{
+    font-size: 2.5em;
+    /* font-weight: bold; */
+}
+
+.marginTop10 
+{
+    margin-top: 10px;
+}
+
