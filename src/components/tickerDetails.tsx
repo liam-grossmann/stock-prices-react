@@ -10,11 +10,11 @@ const mystyle = {
     margintop: '10px',
 };
   
-interface IMyProps {
+interface ITickerDetailsProps {
     ticker: ITicker,
 }
 
-export default function TickerDetails(props: IMyProps) {
+export default function TickerDetails(props: ITickerDetailsProps) {
     let ticker = props.ticker;
 
     return (
@@ -36,13 +36,13 @@ export default function TickerDetails(props: IMyProps) {
                     {ticker.change >= 0 && <div className="row green-text large-text text-center">{ticker.change.toFixed(2)}</div>}
         
                 </div>
-            </div>
-            <div className="col-md-2">
-                <div className="row text-center large-label">CHANGE %</div>
-                {ticker.change < 0 && <div className="row red-text large-text text-center">{ticker.changePercent.toFixed(2)}</div>}
-                {ticker.change >= 0 && <div className="row green-text large-text text-center">{ticker.changePercent.toFixed(2)}</div>}
-            </div>
             
+                <div className="col-md-3">
+                    <div className="row text-center large-label">CHANGE %</div>
+                    {ticker.change < 0 && <div className="row red-text large-text text-center">{ticker.changePercent.toFixed(2)}</div>}
+                    {ticker.change >= 0 && <div className="row green-text large-text text-center">{ticker.changePercent.toFixed(2)}</div>}
+                </div>
+            </div>
 
             <div className="row row-bordered" ></div>
 

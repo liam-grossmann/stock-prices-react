@@ -4,6 +4,12 @@ export enum PriceDirection {
     NoChange = 3
 }
 
+export interface IIntradayPrice {
+    readonly timeString: string,
+    readonly stockPrice: number,
+    readonly time: Date
+}
+
 export interface ITicker {
     readonly id: string;
     readonly name: string;
@@ -25,7 +31,7 @@ export interface ITicker {
     priceDirection: PriceDirection;
     isSubscribing: boolean;
 
-    intradayPrices: any[];
+    intradayPrices: IIntradayPrice[];
 
     initialiseIntradayPrices(): void;
     updatePrices(nextPrice: number): void;

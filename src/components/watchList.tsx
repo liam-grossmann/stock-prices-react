@@ -11,32 +11,19 @@ import WatchListButton from './watchListButton'
 import TickerDetails from './tickerDetails'
 import TickerChart from './tickerChart'
 
-let watchListService = new WatchListService();
 
 export default function WatchList() {
 
-  
-   let tickerTapeTimer = timer(3000, 5000);
-   let subscription = tickerTapeTimer.subscribe(t => {
-        onTickerTape();
+    let watchListService = new WatchListService();
+
+    let tickerTapeTimer = timer(3000, 5000);
+    let subscription = tickerTapeTimer.subscribe(t => {
+         onTickerTape();
     });
     
-   
-    //subscription.unsubscribe()
     const [watchList, setWatchList] = useState(watchListService.getWatchList());
-    const [selectedTicker, setSelectedTicker] = useState(watchList[0])
-
-    const WatchListsidePanel = watchList.map((ticker) =>
-        <WatchListButton
-            key={ticker.id}
-            ticker={ticker}
-            onClick={() => handleWatchListButtonOnClick(ticker)}></WatchListButton>
-    );
-
-    function handleWatchListButtonOnClick(ticker : ITicker) {
-        setSelectedTicker(ticker);
-    }
-
+        const [selectedTicker, setSelectedTicker] = useState(watchList[0])
+     
     function onTickerTape(): void {
         for (let ticker of watchList) {
             ticker.isSubscribing = true;
@@ -55,6 +42,31 @@ export default function WatchList() {
       //  });
         
     }
+    
+
+
+  // let tickerTapeTimer = timer(3000, 5000);
+  // let subscription = tickerTapeTimer.subscribe(t => {
+  //      onTickerTape();
+  //  });
+    
+   
+    //subscription.unsubscribe()
+   // const [watchList, setWatchList] = useState(watchListService.getWatchList());
+  //  const [selectedTicker, setSelectedTicker] = useState(watchList[0])
+
+    const WatchListsidePanel = watchList.map((ticker) =>
+        <WatchListButton
+            key={ticker.id}
+            ticker={ticker}
+            onClick={() => handleWatchListButtonOnClick(ticker)}></WatchListButton>
+    );
+
+    function handleWatchListButtonOnClick(ticker : ITicker) {
+        setSelectedTicker(ticker);
+    }
+
+   
 
 
 
@@ -69,7 +81,7 @@ export default function WatchList() {
                     <div className="col-md-3">SYMBOL</div>
                     <div className="col-md-3">LATEST</div>
                     <div className="col-md-3">CHANGE</div>
-                    <div className="col-md-3">CHG%</div>
+                    <div className="col-md-3">CHG %</div>
                 </div>
 
                 <div className="stackpanelbuttons">
@@ -82,7 +94,7 @@ export default function WatchList() {
                     <TickerDetails ticker={selectedTicker}></TickerDetails>
                 </div>
                 <div className="row">
-                    <TickerChart></TickerChart>
+                    <TickerChart ticker={selectedTicker}></TickerChart>
                 </div>
             </div>
         </div>
