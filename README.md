@@ -1,12 +1,14 @@
 # stock-prices-react
 
-NASDAQ stock prices and charts. Built using ReactJS, RxJS and D3.
+NASDAQ stock prices and charts. 
 
-Project build tool ViteJS.
+Built using TypeScript, ReactJS, D3.js, RxJs.
+
+Project build tool: ViteJS.
 
 **Click [here](https://zealous-sky-017eda110.2.azurestaticapps.net) for live demo.**
 
-[<img src="src/assets/starwars.jpg" style="width: 50%; height: 50%" />](https://zealous-sky-017eda110.2.azurestaticapps.net)
+[<img src="src/assets/stockpricesreact.jpg" style="width: 50%; height: 50%" />](https://zealous-sky-017eda110.2.azurestaticapps.net)
 
 
 
@@ -31,37 +33,25 @@ Project build tool ViteJS.
     npm run serve 
 
 
-When code is checked into github a [workflow job](https://github.com/liam-grossmann/star-wars-d3/blob/main/.github/workflows/azure-static-web-apps-nice-bush-0e3f23110.yml) is automatically run to build and deploy the application to Azure.
+When code is checked into github a [workflow job](.github/workflows) is automatically run to build and deploy the application to Azure.
 
 
 ## Hosted
 
-| Environment | Description                          | Url                                                |
-| ------------| ------------------------------------ | -------------------------------------------------- |
-| Dev          | Hosted by ViteJs                    | http://localhost:3000/                             | 
-| Production   | Hosted by Azure as a static web app | https://nice-bush-0e3f23110.2.azurestaticapps.net/ |
+| Environment | Description                          | Url                                                 |
+| ------------| ------------------------------------ | --------------------------------------------------- |
+| Dev          | Hosted by ViteJs                    | http://localhost:3000/                              | 
+| Production   | Hosted by Azure as a static web app | https://zealous-sky-017eda110.2.azurestaticapps.net |
 
 
 
 ## Dependencies
 
-| Component     | Use                              | Documentation |
-| ------------- | -------------------------------- | ------------------------------------------------ |
-| ViteJs        | Building and bundling the assets | [Webpack Guides](https://webpack.js.org/guides/) | 
-| D3            | Data visualisations library      | [Data Driven Documents](https://d3js.org/)       |
-
-
-
-## Webpack
-
-Webpack configured 
-* Bundle html, js, css, images into the distribution folder
-* Automatically cleans the distribution folder betweeen builds
-* Includes a watcher to aid development by auto building when files change
-* Includes a rudimentary development server
-
-Not covered
-* Code splitting (on demand loads etc)
-* Source maps removed because package bundle was too big.
-
+| Component     | Use                                        | Documentation                                           |
+| ------------- | ------------------------------------------ | ------------------------------------------------------- |
+| TypeScript    | Development Language                       | [TypeScript Home Page](https://www.typescriptlang.org/) | 
+| React         | Responsive combonent based web application | [React Home Page](https://reactjs.org/)                 |
+| D3.js         | Charting                                   | [Data Driven Documents](https://d3js.org/)              |
+| RxJs          | Reactive extensions (update prices)        | [RxJs Home Page](https://rxjs.dev/)                     |
+| ViteJs        | Build and bundling tool - replaces Webpack | [ViteJs Home Page](https://vitejs.dev/)                 |
 
