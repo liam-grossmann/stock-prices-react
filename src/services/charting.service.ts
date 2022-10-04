@@ -1,12 +1,7 @@
 import * as d3 from 'd3';
-import { format } from 'd3-format';
-import { Ticker, ITicker, IIntradayPrice } from './watchList';
+import { ITicker, IIntradayPrice } from './watchList';
 
 export class ChartingService {
-
-   // private d3: d3; // <-- Define the private member which will hold the d3 reference
-    
-   private format2f = d3.format(".2s");
 
     displayChart(ticker: ITicker): void {
 

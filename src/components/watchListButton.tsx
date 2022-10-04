@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import './tickerChart.css'
 import { ITicker } from './../services/watchList'
 

@@ -10,7 +10,6 @@ import imgIntc from './../assets/images/intel.png';
 import imgMsft from './../assets/images/microsoft.png';
 import imgNflx from './../assets/images/netflix.png';
 import imgTsla from './../assets/images/tesla.png';
-
 import { Ticker, ITicker } from './watchList';
 
 export class WatchListService {

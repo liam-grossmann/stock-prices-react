@@ -34,7 +34,6 @@ export default function TickerDetails(props: ITickerDetailsProps) {
                     <div className="row text-center large-label">CHANGE</div>
                     {ticker.change < 0 && <div className="row red-text large-text text-center">{ticker.change.toFixed(2)}</div>}
                     {ticker.change >= 0 && <div className="row green-text large-text text-center">{ticker.change.toFixed(2)}</div>}
-        
                 </div>
             
                 <div className="col-md-3">
@@ -45,7 +44,6 @@ export default function TickerDetails(props: ITickerDetailsProps) {
             </div>
 
             <div className="row row-bordered" ></div>
-
 
             <div className="row grey-text marginTop10">
                 <div className="col-md-3 header text-left">EXCHANGE</div>
@@ -83,7 +81,5 @@ export default function TickerDetails(props: ITickerDetailsProps) {
             </div>
 
         </div>
-
-
     )
 }

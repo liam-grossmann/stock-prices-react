@@ -1,16 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types';
-import { useState } from 'react'
-import './watchList.css'
-import './../services/watchList.service'
-import { WatchListService } from './../services/watchList.service'
-import { ITicker } from './../services/watchList'
+import { useState } from 'react';
+import './watchList.css';
+import './../services/watchList.service';
+import { WatchListService } from './../services/watchList.service';
+import { ITicker } from './../services/watchList';
 import { Subscription } from 'rxjs';
 import { timer } from 'rxjs';
-import WatchListButton from './watchListButton'
-import TickerDetails from './tickerDetails'
-import TickerChart from './tickerChart'
-
+import WatchListButton from './watchListButton';
+import TickerDetails from './tickerDetails';
+import TickerChart from './tickerChart';
 
 export default function WatchList() {
 
@@ -64,11 +61,7 @@ export default function WatchList() {
 
     function handleWatchListButtonOnClick(ticker : ITicker) {
         setSelectedTicker(ticker);
-    }
-
-   
-
-
+    };
 
     return (
         <div className="row reactivetrader">

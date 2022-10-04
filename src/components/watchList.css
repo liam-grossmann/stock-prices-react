@@ -1,6 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-
 body {
     background: #A0CCE6;
     font: 200 12px/1.6 'Montserrat', serif, sans-serif;
@@ -16,7 +15,7 @@ div, button
       color: white;
       width: 100%;
       margin-left: 2px;
-  }
+ }
 
   div.stackpanel 
   {
@@ -123,106 +122,3 @@ div, button
 
 
 
-
- 
-
-/* 
-.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
-    border: 1px solid #000000;
-}
-
-th {
-    border-color: #000000;
-    background-color: #182E49;
-    color: #ffffff;
-}
-
-.table-bordered {
-    border-color: #000000;
-}
-
-.table>tbody>tr:nth-child(even)>td,
-.table>tbody>tr:nth-child(even)>th {
-    border-color: #000000;
-    background-color: #14599B;
-    color: #ffffff;
-}
-
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-    border-color: #000000;
-    background-color: #266AB4;
-    color: #ffffff;
-}
-
-.btn-default {
-    color: #ffffff;
-    background-color: #182E49;
-    border-color: #000000;
-}
-.btn-default:focus,
-.btn-default.focus {
-    color: #ffffff;
-    background-color: #232628;
-    border-color: #000000;
-}
-.btn-default:hover {
-    color: #ffffff;
-    background-color: #232628;
-    border-color: #1e2023;
-}
-
-.btn-default:active,
-.btn-default.active,
-.open > .dropdown-toggle.btn-default {
-    color: #ffffff;
-    background-color: #232628;
-    border-color: #1e2023;
-}
-.btn-default:active:hover,
-.btn-default.active:hover,
-.open > .dropdown-toggle.btn-default:hover,
-.btn-default:active:focus,
-.btn-default.active:focus,
-.open > .dropdown-toggle.btn-default:focus,
-.btn-default:active.focus,
-.btn-default.active.focus,
-.open > .dropdown-toggle.btn-default.focus {
-    color: #ffffff;
-    background-color: #121415;
-    border-color: #000000;
-}
-.btn-default:active,
-.btn-default.active,
-.open > .dropdown-toggle.btn-default {
-    background-image: none;
-}
-
-.starter-template {
-    margin-top : 120px;
-}
-
-h2 {
-    color: #000000;
-}
-
-#prices {
-    font-family:"Arial",Helvetica,Arial,sans-serif;
-    font-size:14px;
-}
-
-.instructionsText {
-    margin-left: 10px;
-}
-
-.backText {
-    margin-left: 10px;
-}
-
-a {
-    color: #A0CCE6;
-}
-
-a:hover {
-    color: #999;
-} */

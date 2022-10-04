@@ -1,10 +1,9 @@
-import React from 'react'
 import { ChartingService } from './../services/charting.service'
 import { ITicker } from './../services/watchList'
 import './tickerChart.css'
 
 interface ITickeChartProps {
-    ticker: ITicker,
+    ticker: ITicker
 }
 
 let chartingService: ChartingService = new ChartingService();
