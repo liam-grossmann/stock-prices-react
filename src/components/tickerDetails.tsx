@@ -1,15 +1,6 @@
 import './tickerDetails.css'
 import { ITicker } from './../services/watchList'
 
-const imageHeigthStyle = {
-    height: '50px',
-    width: '100px'
-};
-
-const mystyle = {
-    margintop: '10px',
-};
-  
 interface ITickerDetailsProps {
     ticker: ITicker,
 }
@@ -22,7 +13,7 @@ export default function TickerDetails(props: ITickerDetailsProps) {
 
             <div className="row">
 
-                {ticker.imageUrl != '' && <div className="col-md-3"><img style={imageHeigthStyle} src={ticker.imageUrl}></img></div>}
+                {ticker.imageUrl != '' && <div className="col-md-3"><img className='imageStyle' src={ticker.imageUrl}></img></div>}
                 {ticker.imageUrl == '' && <div className="col-md-3 text-center large-text">{ticker.id}</div>}
 
                 <div className="col-md-3">

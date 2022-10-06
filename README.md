@@ -54,15 +54,15 @@ When code is checked into github a [workflow job](.github/workflows) is automati
 The application consists of three main react functional components
 * WatchList which lists the tickers (the watch list itself consists of a list of 'watch list button' functional components)
 * TickerDetails which displays ticker details (name, logo, exchange, high, low, volume and so on)
-* TickerChart which display the intraday chart (implemented using D3.js)
+* TickerChart which displays the intraday chart (implemented using D3.js)
+
 Clicking a watch list button causes the 'selectedTicker' to change and the ticker panel and chart panel to refresh.
 
-A simple timer (setInterval) is used update the tickers and the prices. The price changes are simulated using algorithms which create random numbers and random price changes. The WatchList function uses React hooks to ensure the timer is setup once and its
+A simple timer (setInterval) is used update the tickers and the prices. Price changes are simulated using algorithms which create random numbers and random price fluctuations. The WatchList function uses React hooks to ensure the timer is setup once and its
 resources are destroyed correctly
 * The [useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect) hook sets up the timer
 * The [useLayoutEffect](https://reactjs.org/docs/hooks-reference.html#uselayouteffect) hook cleans up the timer
 
-Once the prices are updated, the watch list component and ticker details components are refreshed. However, the chart component
-is NOT refreshed. This is acheived by wrapping the chart functional component up in a [React.memo function](https://reactjs.org/docs/react-api.html#reactmemo). The react memo function ensures that the chart is only re-rendered when the selected ticker changes. Price updates will NOT cause the chart to update. If we did not export the chart functional component as a memo function, the chart would refresh every time prices change ... and this would bring the application to a halt.
+Once the prices are updated, the watch list functional component and ticker details functional component are refreshed by React. However, the chart functional component is NOT refreshed. This is acheived by wrapping the chart functional component up in a [React.memo function](https://reactjs.org/docs/react-api.html#reactmemo). The react memo function ensures that the chart is only re-rendered when the selected ticker changes. Price updates will NOT cause the chart to update. If we did not export the chart functional component as a memo function, the chart would refresh every time prices change ... and this would cause the chart to refresh every two seconds and eventually bring the application to a halt.
 
 Integrating D3.js with the React application was relatively straightforward. It just required the inclusion of the "@types/d3" library to allow compilation with type script.

@@ -56,3 +56,8 @@ div.reactivetraderrightpanel {
     margin-top: 10px;
 }
 
+.imageStyle {
+    max-width: 150px;
+    height: auto;
+}
+

@@ -28,7 +28,6 @@ export default function WatchList() {
     }, []);
 
     function tick() {
-        console.debug('Tick running. Seconds is: ' + seconds)
         setSeconds((prevValue => { return prevValue + 1 }))
         for (let ticker of watchList) {
             if (ticker.isSubscribing) {
@@ -72,7 +71,7 @@ export default function WatchList() {
                 <div className="row">
                     <TickerDetails ticker={selectedTicker}></TickerDetails>
                 </div>
-                <div className="row">
+                <div className="row left-margin-10">
                     <TickerChart ticker={selectedTicker}></TickerChart>
                 </div>
             </div>
