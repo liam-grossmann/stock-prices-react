@@ -1,10 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import './watchList.css';
 import './../services/watchList.service';
 import { WatchListService } from './../services/watchList.service';
 import { ITicker } from './../services/watchList';
-import { Subscription } from 'rxjs';
-import { timer } from 'rxjs';
 import WatchListButton from './watchListButton';
 import TickerDetails from './tickerDetails';
 import TickerChart from './tickerChart';
@@ -12,46 +10,34 @@ import TickerChart from './tickerChart';
 export default function WatchList() {
 
     let watchListService = new WatchListService();
-
-    let tickerTapeTimer = timer(3000, 5000);
-    let subscription = tickerTapeTimer.subscribe(t => {
-         onTickerTape();
-    });
     
     const [watchList, setWatchList] = useState(watchListService.getWatchList());
-        const [selectedTicker, setSelectedTicker] = useState(watchList[0])
-     
-    function onTickerTape(): void {
+    const [selectedTicker, setSelectedTicker] = useState(watchList[1])
+    const [seconds, setSeconds] = useState(0);
+    let setIntervalId: number;
+
+    // Similar to componentDidMount 
+    useEffect(() => {
+        setSelectedTicker(watchList[0]);
+        setIntervalId = setInterval(() => tick(), 2000);
+    }, []);
+    
+    // Similiar to ComponentWillUnmount
+    useLayoutEffect(() => {
+        clearInterval(setIntervalId);
+    }, []);
+
+    function tick() {
+        console.debug('Tick running. Seconds is: ' + seconds)
+        setSeconds((prevValue => { return prevValue + 1 }))
         for (let ticker of watchList) {
-            ticker.isSubscribing = true;
             if (ticker.isSubscribing) {
                 let nextPrice = ticker.getNextPrice();
                 ticker.updatePrices(nextPrice);
-                //this.selectedTicker = this.selectedTicker;
-                ticker.isSubscribing = false;
             }
         }
-        let newWatchList = [...watchList];
-        setWatchList(newWatchList);
-        subscription.unsubscribe();
-       // subscription = tickerTapeTimer.subscribe(t => {
-       ///     onTickerTape();
-      //  });
+    };
         
-    }
-    
-
-
-  // let tickerTapeTimer = timer(3000, 5000);
-  // let subscription = tickerTapeTimer.subscribe(t => {
-  //      onTickerTape();
-  //  });
-    
-   
-    //subscription.unsubscribe()
-   // const [watchList, setWatchList] = useState(watchListService.getWatchList());
-  //  const [selectedTicker, setSelectedTicker] = useState(watchList[0])
-
     const WatchListsidePanel = watchList.map((ticker) =>
         <WatchListButton
             key={ticker.id}
@@ -59,7 +45,7 @@ export default function WatchList() {
             onClick={() => handleWatchListButtonOnClick(ticker)}></WatchListButton>
     );
 
-    function handleWatchListButtonOnClick(ticker : ITicker) {
+    function handleWatchListButtonOnClick(ticker: ITicker) {
         setSelectedTicker(ticker);
     };
 
@@ -91,8 +77,5 @@ export default function WatchList() {
                 </div>
             </div>
         </div>
-        
-
-
     )
 }

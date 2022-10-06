@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { ChartingService } from './../services/charting.service'
 import { ITicker } from './../services/watchList'
 import './tickerChart.css'
@@ -8,9 +9,11 @@ interface ITickeChartProps {
 
 let chartingService: ChartingService = new ChartingService();
 
-export default function TickerChart(props: ITickeChartProps) {
+function TickerChart(props: ITickeChartProps) {
     let ticker = props.ticker;
     chartingService.displayChart(ticker);
+
+    console.debug('Chart getting re-rendered. Stop it !!');
 
     return (
         <div className="reactivetraderchartpanel">
@@ -18,6 +21,8 @@ export default function TickerChart(props: ITickeChartProps) {
         </div>
     )
 }
+
+export default memo(TickerChart);
 
 
 

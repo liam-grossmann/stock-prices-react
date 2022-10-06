@@ -46,6 +46,25 @@ When code is checked into github a [workflow job](.github/workflows) is automati
 | TypeScript    | Development Language                       | [TypeScript Home Page](https://www.typescriptlang.org/) | 
 | React         | Responsive component based web application | [React Home Page](https://reactjs.org/)                 |
 | D3.js         | Charting                                   | [Data Driven Documents](https://d3js.org/)              |
-| RxJs          | Reactive extensions (update prices)        | [RxJs Home Page](https://rxjs.dev/)                     |
 | ViteJs        | Build and bundling tool                    | [ViteJs Home Page](https://vitejs.dev/)                 |
 
+
+## Technical Description
+
+The application consists of three main react functions (i.e. components)
+* WatchList which lists the tickers (the watch list itself consists of a list of 'watch list button' functions / components)
+* TickerDetails which displays ticker details (name, logo, exchange, high, low, volume and so on)
+* TickerChart (implemented with D3.js)
+Clicking a watch list button causes the 'selectedTicker' to change and the ticker panel and chart panel to refresh.
+
+A simple timer (setInterval) is used update the tickers and the prices. The WatchList function uses React hooks to ensure
+the timer is setup once and destroyed correctly
+* The [useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect) hook sets up the timer
+* The [UseLayoutEffect](https://reactjs.org/docs/hooks-reference.html#uselayouteffect) hook cleans up the timer
+
+Once the prices are updated, the watch list component and ticker details components are refreshed. However, the chart component
+is NOT refreshed by wrapping it up in a [React.memo function](https://reactjs.org/docs/react-api.html#reactmemo). The react memo function ensures that the chart is only re-rendered when the selected ticker changes. Price updates will NOT cause the chart to update. If we did not export the chart function as a memo function, the chart would refresh every time prices change ... and this
+would bring the application to a halt.
+
+Integrating D3.js with the React application was relatively straightforward. It just required the inclusion of the 
+"@types/d3" library to allow compilation with type script.
