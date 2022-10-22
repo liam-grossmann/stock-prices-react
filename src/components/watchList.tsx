@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import './watchList.css';
 import './../services/watchList.service';
 import { WatchListService } from './../services/watchList.service';
@@ -10,11 +10,24 @@ import TickerChart from './tickerChart';
 export default function WatchList() {
 
     let watchListService = new WatchListService();
+
+    const refToDivContainingChart = useRef<HTMLInputElement>(null);
     
     const [watchList, setWatchList] = useState(watchListService.getWatchList());
     const [selectedTicker, setSelectedTicker] = useState(watchList[1])
     const [seconds, setSeconds] = useState(0);
+    const [chartWidth, setChartWidth] = useState(500);
+    
     let setIntervalId: number;
+
+    // Get the width of the containing div for the chart. We'll use that width to set the width of the chart
+    const getChartWidth = () => {
+        const paddingWidth = 40;
+        const containingDivWidth = refToDivContainingChart?.current?.offsetWidth;
+        const newChartWidth = (containingDivWidth ? containingDivWidth - paddingWidth : 500);
+        return newChartWidth;
+    }
+    
 
     // Similar to componentDidMount 
     useEffect(() => {
@@ -25,7 +38,22 @@ export default function WatchList() {
     // Similiar to ComponentWillUnmount
     useLayoutEffect(() => {
         clearInterval(setIntervalId);
-    }, []);
+
+        const handleResize = () => {
+            setChartWidth(getChartWidth())
+          }
+      
+          if (refToDivContainingChart.current) {
+            setChartWidth(getChartWidth())
+          }
+      
+        window.addEventListener("resize", handleResize)
+
+        return () => {
+          window.removeEventListener("resize", handleResize)
+        }
+        
+    }, [refToDivContainingChart]);
 
     function tick() {
         setSeconds((prevValue => { return prevValue + 1 }))
@@ -67,12 +95,12 @@ export default function WatchList() {
                 </div>
             </div>
 
-            <div className="col-md-8">
+            <div ref={refToDivContainingChart} className="col-md-8">
                 <div className="row">
                     <TickerDetails ticker={selectedTicker}></TickerDetails>
                 </div>
                 <div className="row left-margin-10">
-                    <TickerChart ticker={selectedTicker}></TickerChart>
+                    <TickerChart ticker={selectedTicker} containerWidth={chartWidth}></TickerChart>
                 </div>
             </div>
         </div>

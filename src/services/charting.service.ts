@@ -3,7 +3,7 @@ import { ITicker, IIntradayPrice } from './watchList';
 
 export class ChartingService {
 
-    displayChart(ticker: ITicker): void {
+    displayChart(ticker: ITicker, containerWidth: number): void {
 
         // Initialise dataset
         let dataset = ticker.intradayPrices;
@@ -11,7 +11,7 @@ export class ChartingService {
 
         //  Initialise chart dimensions
         let margin = { top: 20, right: 50, bottom: 20, left: 40 };
-        let width = 700 - margin.left - margin.right;
+        let width = containerWidth - margin.left - margin.right;
         let height = 200 - margin.top - margin.bottom;
 
         this.clearExistingChart();

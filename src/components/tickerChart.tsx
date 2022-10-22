@@ -4,14 +4,16 @@ import { ITicker } from './../services/watchList'
 import './tickerChart.css'
 
 interface ITickeChartProps {
-    ticker: ITicker
+    ticker: ITicker,
+    containerWidth: number,
 }
 
 let chartingService: ChartingService = new ChartingService();
 
 function TickerChart(props: ITickeChartProps) {
     let ticker = props.ticker;
-    chartingService.displayChart(ticker);
+    let containerWidth = props.containerWidth;
+    chartingService.displayChart(ticker, containerWidth);
 
     return (
         <div className="reactivetraderchartpanel">

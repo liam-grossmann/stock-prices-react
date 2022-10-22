@@ -65,4 +65,7 @@ resources are destroyed correctly
 
 Once the prices are updated, the watch list functional component and ticker details functional component are refreshed by React. However, the chart functional component is NOT refreshed. This is acheived by wrapping the chart functional component up in a [React.memo function](https://reactjs.org/docs/react-api.html#reactmemo). The react memo function ensures that the chart is only re-rendered when the selected ticker changes. Price updates will NOT cause the chart to update. If we did not export the chart functional component as a memo function, the chart would refresh every time prices change ... and this would cause the chart to refresh every two seconds and eventually bring the application to a halt.
 
-Integrating D3.js with the React application was relatively straightforward. It just required the inclusion of the "@types/d3" library to allow compilation with type script.
+Integrating D3.js with the React application was relatively straightforward. It just required the inclusion of the "@types/d3" library to allow compilation with type script. However, in order to make the site responsive, resizing of the chart component required some special code. I grab a reference to the containing div and whenever this containing div is resized,
+the chart is repainted with a new width. This is achieved using the useLayoutEffect hook and some window resize event listeners.
+
+Layout and the responsiveness of the size is controlled by Bootstrap CSS (apart from resizing the chart itself). Would be nice to eventually upgrade from Bootstrap to more modern layout frameworks such as FlexGrid or Grid.css (or both! ).
