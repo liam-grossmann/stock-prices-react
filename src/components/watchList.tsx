@@ -13,59 +13,57 @@ export default function WatchList() {
 
     const refToDivContainingChart = useRef<HTMLInputElement>(null);
     
-    const [watchList, setWatchList] = useState(watchListService.getWatchList());
-    const [selectedTicker, setSelectedTicker] = useState(watchList[1])
+    // Use arrrow functions to initialise state only once
+    const [watchList, setWatchList] = useState(() => watchListService.getWatchList());
+    const [selectedTicker, setSelectedTicker] = useState(() => watchList[0])
     const [seconds, setSeconds] = useState(0);
     const [chartWidth, setChartWidth] = useState(500);
     
     let setIntervalId: number;
 
     // Get the width of the containing div for the chart. We'll use that width to set the width of the chart
-    const getChartWidth = () => {
+    const handleResize = () => {
         const paddingWidth = 40;
         const containingDivWidth = refToDivContainingChart?.current?.offsetWidth;
         const newChartWidth = (containingDivWidth ? containingDivWidth - paddingWidth : 500);
-        return newChartWidth;
+        setChartWidth(newChartWidth);
     }
     
-
-    // Similar to componentDidMount 
+    // Since we pass '[]' as the dependancies, useEffect will only run when the functional component mounts
+    // We return a cleanup function which clears the interval 
     useEffect(() => {
         setSelectedTicker(watchList[0]);
         setIntervalId = setInterval(() => tick(), 2000);
+        return (() => clearInterval(setIntervalId));
     }, []);
     
-    // Similiar to ComponentWillUnmount
+    // Run anytime the reference to div chanages. useLayoutEffect runs synchronously (as opposed to useEffect which runs
+    // asynchronously. So useLayoutEffect is ideal when we want to write code that runs in response to layout changes.
+    // We return a cleanup function which clears the event listener.
     useLayoutEffect(() => {
-        clearInterval(setIntervalId);
-
-        const handleResize = () => {
-            setChartWidth(getChartWidth())
-          }
-      
-          if (refToDivContainingChart.current) {
-            setChartWidth(getChartWidth())
-          }
-      
-        window.addEventListener("resize", handleResize)
-
-        return () => {
-          window.removeEventListener("resize", handleResize)
+        if (refToDivContainingChart.current) {
+            handleResize();
         }
+        window.addEventListener("resize", handleResize)
+        return (() => {
+            window.removeEventListener("resize", handleResize)
+        });
         
     }, [refToDivContainingChart]);
 
+    // Runs when interval passes - prices are updated. We reset the 'seconds' state variable to force a re-render.
     function tick() {
-        setSeconds((prevValue => { return prevValue + 1 }))
         for (let ticker of watchList) {
             if (ticker.isSubscribing) {
                 let nextPrice = ticker.getNextPrice();
                 ticker.updatePrices(nextPrice);
             }
         }
+        setSeconds((prevValue => { return prevValue + 1 }))
     };
         
-    const WatchListsidePanel = watchList.map((ticker) =>
+    // Returns a list of 'watchlist' buttons.
+    const WatchListsidePanel = watchList.map((ticker) => 
         <WatchListButton
             key={ticker.id}
             ticker={ticker}
@@ -74,6 +72,7 @@ export default function WatchList() {
 
     function handleWatchListButtonOnClick(ticker: ITicker) {
         setSelectedTicker(ticker);
+        ticker.isSubscribing = true;
     };
 
     return (
@@ -81,7 +80,7 @@ export default function WatchList() {
 
             <div className="col-md-4 stackpanel">
 
-                <div className="row stackpanelheader grey-text">&nbsp;NASDAQ Market</div>
+                <div className="row stackpanelheader grey-text">NASDAQ Market</div>
 
                 <div className="row grey-text text-center stackpanellabels">
                     <div className="col-md-3">SYMBOL</div>
