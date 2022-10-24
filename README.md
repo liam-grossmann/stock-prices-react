@@ -73,4 +73,4 @@ Once the prices are updated, the watch list functional component and ticker deta
 
 Integrating D3.js with the React application was relatively straightforward. It just required the inclusion of the "@types/d3" library to allow compilation with type script. However, in order to make the site responsive, resizing of the chart component required some special code. I grab a reference to the containing div and whenever this containing div is resized, the chart is repainted with a new width. This is achieved using the useLayoutEffect hook and some window resize event listeners.
 
-Layout and the responsiveness of the size is controlled by Bootstrap CSS (apart from resizing the chart itself). Would be nice to eventually upgrade from Bootstrap to a more modern layout frameworks such as FlexGrid or Grid.css (or both! ).
+Layout and the responsiveness of the site is controlled by Bootstrap CSS (apart from resizing the chart itself). Would be nice to eventually upgrade from Bootstrap to more modern layout frameworks such as FlexGrid or Grid.css (or both! ).
