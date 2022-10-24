@@ -64,8 +64,8 @@ A simple timer (setInterval) is used update the tickers and the prices. Price ch
 
 The WatchList component demonstrates and describes 5 react hooks as follows
 * [useState](https://reactjs.org/docs/hooks-state.html) stores state including selected ticker
-* [useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect) sets up the timer and cleans up 
-* [useLayoutEffect](https://reactjs.org/docs/hooks-reference.html#uselayouteffect) resizes chart when window resizes
+* [useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect) sets up the timer and cleans up setInterval timer
+* [useLayoutEffect](https://reactjs.org/docs/hooks-reference.html#uselayouteffect) resizes chart when window resizes and cleans up event listener
 * [useRef](https://reactjs.org/docs/hooks-reference.html#useref) references chart containing div to calculate chart width
 * [useMemo](https://reactjs.org/docs/hooks-reference.html#usememo) chart is exported as a memo function for performance
 
