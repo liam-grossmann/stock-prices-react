@@ -4,9 +4,9 @@ NASDAQ stock prices and charts. Built using TypeScript, ReactJS, D3.js. Project 
 
 Code contains really nice demonstrations and use of 5 react hooks including comments to show when and how to use them. See comments below.
 
-**Click [here](https://zealous-sky-017eda110.2.azurestaticapps.net) for live demo.**
+**Click [here](https://wonderful-glacier-03e0c3b03.2.azurestaticapps.net) for live demo.**
 
-[<img src="src/assets/stockpricesreact.jpg" style="width: 50%; height: 50%" />](https://zealous-sky-017eda110.2.azurestaticapps.net)
+[<img src="src/assets/stockpricesreact.jpg" style="width: 50%; height: 50%" />](https://wonderful-glacier-03e0c3b03.2.azurestaticapps.net)
 
 
 
